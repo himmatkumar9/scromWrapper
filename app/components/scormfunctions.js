@@ -1,42 +1,42 @@
 
-// At the top of scormApi.js
-if (typeof window !== 'undefined') {
-    window.API = {
-      LMSInitialize: function(param) {
-        console.log("LMSInitialize(" + param + ")");
-        return "true";
-      },
-      LMSFinish: function(param) {
-        console.log("LMSFinish(" + param + ")");
-        return "true";
-      },
-      LMSGetValue: function(element) {
-        console.log("LMSGetValue(" + element + ")");
-        return localStorage.getItem(element) || "";
-      },
-      LMSSetValue: function(element, value) {
-        console.log("LMSSetValue(" + element + ", " + value + ")");
-        localStorage.setItem(element, value);
-        return "true";
-      },
-      LMSCommit: function(param) {
-        console.log("LMSCommit(" + param + ")");
-        return "true";
-      },
-      LMSGetLastError: function() {
-        console.log("LMSGetLastError()");
-        return "0";
-      },
-      LMSGetErrorString: function(errorCode) {
-        console.log("LMSGetErrorString(" + errorCode + ")");
-        return "No error";
-      },
-      LMSGetDiagnostic: function(errorCode) {
-        console.log("LMSGetDiagnostic(" + errorCode + ")");
-        return "No diagnostic information";
-      }
-    };
-  }
+// // At the top of scormApi.js
+// if (typeof window !== 'undefined') {
+//     window.API = {
+//       LMSInitialize: function(param) {
+//         console.log("LMSInitialize(" + param + ")");
+//         return "true";
+//       },
+//       LMSFinish: function(param) {
+//         console.log("LMSFinish(" + param + ")");
+//         return "true";
+//       },
+//       LMSGetValue: function(element) {
+//         console.log("LMSGetValue(" + element + ")");
+//         return localStorage.getItem(element) || "";
+//       },
+//       LMSSetValue: function(element, value) {
+//         console.log("LMSSetValue(" + element + ", " + value + ")");
+//         localStorage.setItem(element, value);
+//         return "true";
+//       },
+//       LMSCommit: function(param) {
+//         console.log("LMSCommit(" + param + ")");
+//         return "true";
+//       },
+//       LMSGetLastError: function() {
+//         console.log("LMSGetLastError()");
+//         return "0";
+//       },
+//       LMSGetErrorString: function(errorCode) {
+//         console.log("LMSGetErrorString(" + errorCode + ")");
+//         return "No error";
+//       },
+//       LMSGetDiagnostic: function(errorCode) {
+//         console.log("LMSGetDiagnostic(" + errorCode + ")");
+//         return "No diagnostic information";
+//       }
+//     };
+//   }
 var findAPITries = 0;
 var maxFindAPITries = 10;
 
