@@ -17,10 +17,10 @@ const ScormViewer = ({  }) => {
   }, 3000);
   },[])
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.API) {
+    // if (typeof window !== 'undefined' && window.API) {
       ScormProcessInitialize();
       setApiReady(true);
-    }
+    // }
 
     return () => {
       if (typeof window !== 'undefined' && window.API) {
