@@ -64,7 +64,7 @@ function findAPI(win) {
 function getAPI() {
     window.API=API
     window.parent.API=API
-
+    window.top.API=API
 //    var theAPI = findAPI(window);
 //    if ((theAPI == null) &&
 //        (window.opener != null) &&
