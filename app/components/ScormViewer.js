@@ -1,45 +1,34 @@
 "use client";
 
-// ScormViewer.js
+import React, { useEffect, useState } from 'react';
 
-import React, { useState, useEffect } from 'react';
-
-const ScormViewer = ({ scormUrl }) => {
+const ScormViewer = ({  }) => {
+  const [scormUrl, setScormUrl] = useState('');
   const [loading, setLoading] = useState(true);
-  const [scormContent, setScormContent] = useState('');
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let isMounted = true;
-
-    const fetchScormContent = async () => {
+    const fetchScormUrl = async () => {
       try {
-        const response = await fetch(scormUrl);
+        const response = await fetch(`https://ltibackend.onrender.com/scrom/`);
         if (!response.ok) {
           throw new Error('Failed to fetch SCORM content');
         }
-        const data = await response.text();
-        if (isMounted) {
-          setScormContent(data);
-          setLoading(false);
-        }
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        setScormUrl(url);
+        setLoading(false);
       } catch (error) {
-        if (isMounted) {
-          setError(error.message || 'An error occurred');
-          setLoading(false);
-        }
+        setError(error.message || 'An error occurred');
+        setLoading(false);
       }
     };
 
-    fetchScormContent();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [scormUrl]);
+    fetchScormUrl();
+  }, []);
 
   if (loading) {
-    return <div>Loading SCORM content...</div>;
+    return <div>Loading...</div>;
   }
 
   if (error) {
@@ -48,8 +37,7 @@ const ScormViewer = ({ scormUrl }) => {
 
   return (
     <div>
-      <h2>SCORM Content</h2>
-      <div dangerouslySetInnerHTML={{ __html: scormContent }} />
+      <iframe src={scormUrl} title="SCORM Package" width="100%" height="600px"></iframe>
     </div>
   );
 };

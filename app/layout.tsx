@@ -10,7 +10,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ScormViewer
-          scormUrl={scormUrl}
+          
         />
       </body>
     </html>
