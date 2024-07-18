@@ -7,6 +7,9 @@ const ScormViewer = ({  }) => {
   const [scormUrl, setScormUrl] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [apiReady, setApiReady] = useState(false);
+
   useEffect(()=>{
 
   setTimeout(() => {
@@ -14,32 +17,18 @@ const ScormViewer = ({  }) => {
   }, 3000);
   },[])
   useEffect(() => {
-    // Initialize SCORM
-    try {
+    if (typeof window !== 'undefined' && window.API) {
       ScormProcessInitialize();
-      
-      // Example of getting and setting a SCORM value
-      const lessonStatus = ScormProcessGetValue("cmi.core.lesson_status");
-      console.log("Lesson status:", lessonStatus);
-      
-      ScormProcessSetValue("cmi.core.lesson_status", "incomplete");
-
-      setLoading(false);
-    } catch (err) {
-      console.error("Error initializing SCORM:", err);
-      setError("Failed to initialize SCORM");
-      setLoading(false);
+      setApiReady(true);
     }
 
-    // Cleanup function
     return () => {
-      try {
+      if (typeof window !== 'undefined' && window.API) {
         ScormProcessFinish();
-      } catch (err) {
-        console.error("Error finishing SCORM:", err);
       }
     };
   }, []);
+
   // useEffect(() => {
   //   const fetchScormUrl = async () => {
   //     try {
@@ -61,10 +50,9 @@ const ScormViewer = ({  }) => {
   //   fetchScormUrl();
   // }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
+  if (!apiReady) {
+    return <div>Loading SCORM API...</div>;
   }
-
   // if (error) {
   //   return <div>Error: {error}</div>;
   // }
