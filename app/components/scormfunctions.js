@@ -169,3 +169,5 @@ function ScormProcessSetValue(element, value) {
     }
 }
 
+
+export { ScormProcessInitialize, ScormProcessFinish, ScormProcessGetValue, ScormProcessSetValue };

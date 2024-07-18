@@ -1,4 +1,4 @@
-import ScormViewer from './components/ScormViewer'
+import ScormViewer from './components/ScormViewerComponent'
 export default function RootLayout({
   children,
 }: {

@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import  './scormfunctions'
+import { ScormProcessInitialize, ScormProcessFinish, ScormProcessGetValue, ScormProcessSetValue } from './scormfunctions';
+
 const ScormViewer = ({  }) => {
   const [scormUrl, setScormUrl] = useState('');
   const [loading, setLoading] = useState(true);
@@ -12,6 +13,33 @@ const ScormViewer = ({  }) => {
     setLoading(false)
   }, 3000);
   },[])
+  useEffect(() => {
+    // Initialize SCORM
+    try {
+      ScormProcessInitialize();
+      
+      // Example of getting and setting a SCORM value
+      const lessonStatus = ScormProcessGetValue("cmi.core.lesson_status");
+      console.log("Lesson status:", lessonStatus);
+      
+      ScormProcessSetValue("cmi.core.lesson_status", "incomplete");
+
+      setLoading(false);
+    } catch (err) {
+      console.error("Error initializing SCORM:", err);
+      setError("Failed to initialize SCORM");
+      setLoading(false);
+    }
+
+    // Cleanup function
+    return () => {
+      try {
+        ScormProcessFinish();
+      } catch (err) {
+        console.error("Error finishing SCORM:", err);
+      }
+    };
+  }, []);
   // useEffect(() => {
   //   const fetchScormUrl = async () => {
   //     try {
