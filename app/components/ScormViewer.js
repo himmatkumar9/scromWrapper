@@ -10,23 +10,45 @@ const ScormViewer = ({  }) => {
 
   const [apiReady, setApiReady] = useState(false);
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-  setTimeout(() => {
-    setLoading(false)
-  }, 3000);
-  },[])
+  // setTimeout(() => {
+  //   setLoading(false)
+  // }, 3000);
+  // },[])
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.API) {
-      ScormProcessInitialize();
-      setApiReady(true);
-    }
-
-    return () => {
-      if (typeof window !== 'undefined' && window.API) {
-        ScormProcessFinish();
-      }
+    // Define the SCORM API
+    const API = {
+      LMSInitialize: (param) => {
+        console.log("LMSInitialize", param);
+        return "true";
+      },
+      LMSFinish: (param) => {
+        console.log("LMSFinish", param);
+        return "true";
+      },
+      LMSGetValue: (element) => {
+        console.log("LMSGetValue", element);
+        return localStorage.getItem(element) || "";
+      },
+      LMSSetValue: (element, value) => {
+        console.log("LMSSetValue", element, value);
+        localStorage.setItem(element, value);
+        return "true";
+      },
+      // ... other API methods ...
     };
+
+    // Listen for messages from the iframe
+    window.addEventListener('message', (event) => {
+      if (event.origin !== "https://ltibackend.onrender.com") return;
+
+      const { method, params } = event.data;
+      if (API[method]) {
+        const result = API[method](...params);
+        event.source.postMessage({ method, result }, event.origin);
+      }
+    });
   }, []);
 
   // useEffect(() => {
