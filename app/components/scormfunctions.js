@@ -62,17 +62,18 @@ function findAPI(win) {
 }
 
 function getAPI() {
-   var theAPI = findAPI(window);
-   if ((theAPI == null) &&
-       (window.opener != null) &&
-       (typeof(window.opener) != "undefined")) {
-      console.log("Searching for API in window opener...");
-      theAPI = findAPI(window.opener);
-   }
-   if (theAPI == null) {
-      console.log("Unable to find an API adapter");
-   }
-   return theAPI;
+    window.API=API
+//    var theAPI = findAPI(window);
+//    if ((theAPI == null) &&
+//        (window.opener != null) &&
+//        (typeof(window.opener) != "undefined")) {
+//       console.log("Searching for API in window opener...");
+//       theAPI = findAPI(window.opener);
+//    }
+//    if (theAPI == null) {
+//       console.log("Unable to find an API adapter");
+//    }
+   return API;
 }
 
 var SCORM_TRUE = "true";
