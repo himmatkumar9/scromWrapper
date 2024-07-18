@@ -16,6 +16,7 @@ const ScormViewer = ({  }) => {
         }
         const blob = await response.blob();
         const url = URL.createObjectURL(blob);
+        console.log(url)
         setScormUrl(url);
         setLoading(false);
       } catch (error) {
