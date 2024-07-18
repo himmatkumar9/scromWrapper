@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { ScormProcessInitialize, ScormProcessFinish, ScormProcessGetValue, ScormProcessSetValue } from './scormfunctions';
+import  './scormfunctions';
 
 const ScormViewer = ({  }) => {
   const [scormUrl, setScormUrl] = useState('');
@@ -16,18 +16,7 @@ const ScormViewer = ({  }) => {
     setLoading(false)
   }, 3000);
   },[])
-  useEffect(() => {
-    // if (typeof window !== 'undefined' && window.API) {
-      ScormProcessInitialize();
-      setApiReady(true);
-    // }
 
-    return () => {
-      if (typeof window !== 'undefined' && window.API) {
-        ScormProcessFinish();
-      }
-    };
-  }, []);
 
   // useEffect(() => {
   //   const fetchScormUrl = async () => {
@@ -50,9 +39,9 @@ const ScormViewer = ({  }) => {
   //   fetchScormUrl();
   // }, []);
 
-  if (!apiReady) {
-    return <div>Loading SCORM API...</div>;
-  }
+  // if (!apiReady) {
+  //   return <div>Loading SCORM API...</div>;
+  // }
   // if (error) {
   //   return <div>Error: {error}</div>;
   // }
