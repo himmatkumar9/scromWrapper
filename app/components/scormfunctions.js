@@ -1,90 +1,4 @@
 
-// // At the top of scormApi.js
-// if (typeof window !== 'undefined') {
-//     window.API = {
-//       LMSInitialize: function(param) {
-//         console.log("LMSInitialize(" + param + ")");
-//         return "true";
-//       },
-//       LMSFinish: function(param) {
-//         console.log("LMSFinish(" + param + ")");
-//         return "true";
-//       },
-//       LMSGetValue: function(element) {
-//         console.log("LMSGetValue(" + element + ")");
-//         return localStorage.getItem(element) || "";
-//       },
-//       LMSSetValue: function(element, value) {
-//         console.log("LMSSetValue(" + element + ", " + value + ")");
-//         localStorage.setItem(element, value);
-//         return "true";
-//       },
-//       LMSCommit: function(param) {
-//         console.log("LMSCommit(" + param + ")");
-//         return "true";
-//       },
-//       LMSGetLastError: function() {
-//         console.log("LMSGetLastError()");
-//         return "0";
-//       },
-//       LMSGetErrorString: function(errorCode) {
-//         console.log("LMSGetErrorString(" + errorCode + ")");
-//         return "No error";
-//       },
-//       LMSGetDiagnostic: function(errorCode) {
-//         console.log("LMSGetDiagnostic(" + errorCode + ")");
-//         return "No diagnostic information";
-//       }
-//     };
-//   }
-var findAPITries = 0;
-var maxFindAPITries = 10;
-
-
-
-function findAPI(win) {
-   console.log("Searching for SCORM API...");
-   while ((win.API == null) &&
-          (win.parent != null) &&
-          (win.parent != win)) {
-      findAPITries++;
-      console.log(`Trying to find API: Attempt ${findAPITries}`);
-      if (findAPITries > maxFindAPITries) {
-         console.log("Error finding API -- too deeply nested.");
-         return null;
-      }
-      win = win.parent;
-   }
-   if (win.API) {
-       console.log("SCORM API found.");
-   }
-   return win.API;
-}
-
-function getAPI() {
-    window.API=API
-    window.parent.API=API
-    window.top.API=API
-//    var theAPI = findAPI(window);
-//    if ((theAPI == null) &&
-//        (window.opener != null) &&
-//        (typeof(window.opener) != "undefined")) {
-//       console.log("Searching for API in window opener...");
-//       theAPI = findAPI(window.opener);
-//    }
-//    if (theAPI == null) {
-//       console.log("Unable to find an API adapter");
-//    }
-   return API;
-}
-
-var SCORM_TRUE = "true";
-var SCORM_FALSE = "false";
-var SCORM_NO_ERROR = "0";
-
-var finishCalled = false;
-var initialized = false;
-
 var API = {
     // Initialize function
     LMSInitialize: function(param) {
@@ -150,6 +64,56 @@ var API = {
         return "No diagnostic information"; // Return diagnostic info based on errorCode
     }
 };
+window.API=API
+window.parent=API
+window.opener=API
+window.top=API
+var findAPITries = 0;
+var maxFindAPITries = 10;
+
+
+
+function findAPI(win) {
+   console.log("Searching for SCORM API...");
+   while ((win.API == null) &&
+          (win.parent != null) &&
+          (win.parent != win)) {
+      findAPITries++;
+      console.log(`Trying to find API: Attempt ${findAPITries}`);
+      if (findAPITries > maxFindAPITries) {
+         console.log("Error finding API -- too deeply nested.");
+         return null;
+      }
+      win = win.parent;
+   }
+   if (win.API) {
+       console.log("SCORM API found.");
+   }
+   return win.API;
+}
+
+function getAPI() {
+   var theAPI = findAPI(window);
+   if ((theAPI == null) &&
+       (window.opener != null) &&
+       (typeof(window.opener) != "undefined")) {
+      console.log("Searching for API in window opener...");
+      theAPI = findAPI(window.opener);
+   }
+   if (theAPI == null) {
+      console.log("Unable to find an API adapter");
+   }
+   return theAPI;
+}
+
+var SCORM_TRUE = "true";
+var SCORM_FALSE = "false";
+var SCORM_NO_ERROR = "0";
+
+var finishCalled = false;
+var initialized = false;
+
+
 
 
 
@@ -211,5 +175,3 @@ function ScormProcessSetValue(element, value) {
     }
 }
 
-
-export { ScormProcessInitialize, ScormProcessFinish, ScormProcessGetValue, ScormProcessSetValue };
