@@ -6,7 +6,12 @@ const ScormViewer = ({  }) => {
   const [scormUrl, setScormUrl] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  useEffect(()=>{
 
+  setTimeout(() => {
+    setLoading(false)
+  }, 3000);
+  },[])
   // useEffect(() => {
   //   const fetchScormUrl = async () => {
   //     try {
@@ -28,9 +33,9 @@ const ScormViewer = ({  }) => {
   //   fetchScormUrl();
   // }, []);
 
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   // if (error) {
   //   return <div>Error: {error}</div>;
