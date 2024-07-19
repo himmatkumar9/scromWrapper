@@ -26,7 +26,9 @@ const ScormViewer = () => {
           'ChildWindow',
           'width=600,height=400'
         );
-
+        ChildWindow.onload(()=>{
+          console.log('loadedd')
+        })
       }}>press me</button>
       {/* {error && <div>Error: {error}</div>} */}
     </div>
