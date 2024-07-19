@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import  './scormfunctions';
+// import  './scormfunctions';
 
 const ScormViewer = ({  }) => {
   const [scormUrl, setScormUrl] = useState('');
