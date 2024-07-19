@@ -37,7 +37,7 @@ const ScormViewer = () => {
           'width=600,height=400'
         );
       
-        ChildWindow.window.API = API;
+        ChildWindow.API = API;
         console.log(ChildWindow.window)
         // ChildWindow.onload = () => {
         //   console.log('hiii')
