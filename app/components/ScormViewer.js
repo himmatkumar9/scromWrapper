@@ -4,26 +4,10 @@ const ScormViewer = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
 
-    window.addEventListener('message', (event) => {
-      if (event.origin !== 'https://www.nailsbyru.com') {
-        return;
-      }
-      console.log('Message from iframe:', event.data);
-    });
-  }, []);
-
-  const handleIframeLoad = () => {
-    const iframe = document.getElementById('scormIframe');
-    iframe.contentWindow.postMessage('Hello from parent', 'https://www.nailsbyru.com');
-  };
 
   return (
-    <div>
+    <div onLoad={ScormProcessInitialize}>
       {/* {loading ? <div>Loading SCORM API...</div> : (
         <iframe  
           id="scormIframe"
