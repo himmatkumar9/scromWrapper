@@ -1,4 +1,4 @@
-
+console.log('infile')
 var API = {
     // Initialize function
     LMSInitialize: function(param) {
@@ -175,3 +175,4 @@ function ScormProcessSetValue(element, value) {
     }
 }
 
+export {ScormProcessInitialize}
