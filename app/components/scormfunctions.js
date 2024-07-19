@@ -1,4 +1,4 @@
-console.log('infile')
+
 var API = {
     // Initialize function
     LMSInitialize: function(param) {
@@ -67,7 +67,7 @@ var API = {
 window.API=API
 window.parent=API
 window.opener=API
-// window.top=API
+window.top=API
 var findAPITries = 0;
 var maxFindAPITries = 10;
 
@@ -175,4 +175,3 @@ function ScormProcessSetValue(element, value) {
     }
 }
 
-export {ScormProcessInitialize}
