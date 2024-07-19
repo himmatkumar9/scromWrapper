@@ -49,7 +49,7 @@ const ScormViewer = ({  }) => {
   return (
     <div>
       <iframe  
-      sandbox="allow-same-origin"
+      sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
       crossOrigin = 'true'
       src={'https://lti-backend.vercel.app/scrom/topic-5/scormcontent/index.html'} title="SCORM Package" width="100%" height="600px"></iframe>
     </div>
