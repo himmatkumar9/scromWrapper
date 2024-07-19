@@ -67,7 +67,7 @@ var API = {
 window.API=API
 window.parent=API
 window.opener=API
-window.top=API
+// window.top=API
 var findAPITries = 0;
 var maxFindAPITries = 10;
 
