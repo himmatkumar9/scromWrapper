@@ -48,12 +48,11 @@ const ScormViewer = ({  }) => {
 
   return (
     <div>
-      <object 
-  data="https://lti-backend.vercel.app/scrom/topic-5/scormcontent/index.html"
-  type="text/html"
-  width="100%"
-  height="600px">
-</object>
+      
+  <iframe  
+      // sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+      crossOrigin = 'true'
+      src={'https://www.nailsbyru.com/scrom/topic-5/scormcontent/index.html'} title="SCORM Package" width="100%" height="600px"></iframe>
       {/* <iframe  
       sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
       crossOrigin = 'true'
