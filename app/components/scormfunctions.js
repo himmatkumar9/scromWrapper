@@ -175,3 +175,4 @@ function ScormProcessSetValue(element, value) {
     }
 }
 
+export {API}
