@@ -50,7 +50,7 @@ const ScormViewer = ({  }) => {
     <div>
       <iframe  
       crossOrigin = 'true'
-      src={'https://lti-backend.vercel.app/scrom/imsmanifest.xml'} title="SCORM Package" width="100%" height="600px"></iframe>
+      src={'https://lti-backend.vercel.app/scrom/scormcontent/index.html'} title="SCORM Package" width="100%" height="600px"></iframe>
     </div>
   );
 };
