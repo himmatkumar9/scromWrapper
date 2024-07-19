@@ -20,30 +20,13 @@ const ScormViewer = () => {
         ></iframe>
       )} */}
       <button onClick={() => {
-        // Define the SCORM API Adapter in the parent window
-        // window.API = {
-        //   LMSInitialize: () => "true",
-        //   LMSFinish: () => "true",
-        //   LMSGetValue: (name) => "",
-        //   LMSSetValue: (name, value) => "true",
-        //   LMSCommit: () => "true",
-        //   LMSGetLastError: () => "0",
-        //   LMSGetErrorString: (errorCode) => "",
-        //   LMSGetDiagnostic: (errorCode) => ""
-        // };
+        window.API=API
         const ChildWindow = window.open(
           'https://www.nailsbyru.com/scrom/topic-5/scormdriver/indexAPI.html',
           'ChildWindow',
           'width=600,height=400'
         );
-      
-        ChildWindow.API = API;
-        console.log(ChildWindow.window)
-        // ChildWindow.onload = () => {
-        //   console.log('hiii')
-        
 
-        // };
       }}>press me</button>
       {/* {error && <div>Error: {error}</div>} */}
     </div>
