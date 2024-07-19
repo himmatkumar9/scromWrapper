@@ -1,9 +1,9 @@
-
+import ScormViewer from './components/ScormViewerComponent'
 
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col p-6">
-      <p>hiii</p>
+      <ScormViewer/>
     </main>
   );
 }
