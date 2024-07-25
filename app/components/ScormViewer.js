@@ -3,9 +3,6 @@ import { API } from './scormfunctions'
 const ScormViewer = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-
-
   return (
     <div>
       {/* {loading ? <div>Loading SCORM API...</div> : (
@@ -22,7 +19,7 @@ const ScormViewer = () => {
       <button onClick={() => {
         window.API=API
         const ChildWindow = window.open(
-          'https://www.nailsbyru.com/scrom/topic-5/scormcontent/index.html',
+          'https://saraslmsdev.blob.core.windows.net/scorm/index.html',
           'ChildWindow',
           'width=600,height=400'
         );
