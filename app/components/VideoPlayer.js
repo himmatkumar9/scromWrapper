@@ -3,6 +3,8 @@
 import videojs from "video.js";
 import VideoJS from "./video";
 import React, { useEffect, useState } from "react";
+import Vimeo from '@u-wave/react-vimeo'; // eslint-disable-line import/no-unresolved
+
 const videoJsOptions = {
     autoplay: false,
     controls: false,
@@ -14,7 +16,7 @@ const videoJsOptions = {
 export default function VideoPlayer() {
     const playerRef = React.useRef(null);
     const [playing, setPlaying] = useState(false)
-    const [showQuiz,setShowQuiz]=useState(false)
+    const [showQuiz, setShowQuiz] = useState(false)
 
     const handlePlayerReady = (player) => {
         playerRef.current = player;
@@ -52,13 +54,12 @@ export default function VideoPlayer() {
             intervalId = setInterval(() => {
                 if (playerRef.current) {
                     console.log(playerRef.current.currentTime());
-                    if (playerRef.current.currentTime() > 3.2 && playerRef.current.currentTime() < 3.9)
-                    {
+                    if (playerRef.current.currentTime() > 3.2 && playerRef.current.currentTime() < 3.9) {
                         setShowQuiz(true)
                         playerRef.current.pause()
                         setPlaying(false)
                     }
-                    else{
+                    else {
                         setShowQuiz(false)
                     }
                 }
@@ -75,9 +76,20 @@ export default function VideoPlayer() {
         <main style={{ display: 'flex', alignItems: 'center' }}>
 
             <div style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }} >
-                <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+                {/* <VideoJS options={videoJsOptions} onReady={handlePlayerReady} /> */}
+                {/* ?h=f81437a90f5a4ee6a1990c082c46bee8 */}
+                <Vimeo
+                    video={`989448115`}
+                    width={640}
+                    height={480}
+                    autoplay
+                // volume={volume}
+                // paused={paused}
+                // onPause={this.handlePlayerPause}
+                // onPlay={this.handlePlayerPlay}
+                />
             </div>
-           {showQuiz&& <div style={{ width: '15%', height: 200, backgroundColor: 'red', position: 'absolute', zIndex: 1, top: '45%', left: '43%' }} ></div>}
+            {showQuiz && <div style={{ width: '15%', height: 200, backgroundColor: 'red', position: 'absolute', zIndex: 1, top: '45%', left: '43%' }} ></div>}
             <button type="button" onClick={() => {
                 setPlaying(true)
                 playerRef.current.play()
