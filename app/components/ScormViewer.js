@@ -5,17 +5,17 @@ const ScormViewer = () => {
   const [error, setError] = useState(null);
   return (
     <div>
-      {/* {loading ? <div>Loading SCORM API...</div> : (
+      {loading ? <div>Loading SCORM API...</div> : (
         <iframe  
           id="scormIframe"
-          src='https://ltibackend.onrender.com/scrom/topic-5/scormdriver/indexAPI.html'
+          src='https://api.nailsbyru.com/scrom/topic-5/scormdriver/indexAPI.html'
           title="SCORM Package"
           width="100%"
           height="600px"
           onLoad={handleIframeLoad}
           sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
         ></iframe>
-      )} */}
+      )}
       <button onClick={() => {
         window.API=API
         const ChildWindow = window.open(
