@@ -65,9 +65,18 @@ var API = {
     }
 };
 window.API=API
-window.parent=API
-window.opener=API
-window.top=API
+if(window.parent)
+{
+    window.parent=API
+}
+if(window.opener)
+{
+    window.opener=API
+}
+if(window.top)
+{
+    window.top=API
+}
 var findAPITries = 0;
 var maxFindAPITries = 10;
 
