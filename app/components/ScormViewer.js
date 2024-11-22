@@ -19,7 +19,7 @@ const ScormViewer = () => {
       <button onClick={() => {
         window.API=API
         const ChildWindow = window.open(
-          'https://api.nailsbyru.com/scrom/topic-5/scormdriver/indexAPI.html',
+          'https://nailsbyru.com/scrom/topic-5/scormdriver/indexAPI.html',
           'ChildWindow',
           'width=600,height=400'
         );
