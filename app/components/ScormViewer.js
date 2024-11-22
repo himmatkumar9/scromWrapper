@@ -17,7 +17,14 @@ const ScormViewer = () => {
         ></iframe>
       )} */}
       <button onClick={() => {
-        window.API=API
+if (!window.parent.API) {
+  window.parent.API = API; // Attach the local API for testing
+  console.log("Simulated API attached to parent window.");
+}
+
+if (!window.opener || !window.opener.API) {
+  console.log("No valid opener window or API found.");
+}
         const ChildWindow = window.open(
           'https://nailsbyru.com/scrom/topic-5/scormdriver/indexAPI.html',
           'ChildWindow',
