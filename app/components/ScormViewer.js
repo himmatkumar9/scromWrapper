@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { API } from './scormfunctions'
+import { API ,ScormProcessInitialize} from './scormfunctions'
 const ScormViewer = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,7 +17,7 @@ const ScormViewer = () => {
         ></iframe>
       )} */}
       <button onClick={() => {
-        window.API=API
+     ScormProcessInitialize()
         const ChildWindow = window.open(
           'https://nailsbyru.com/scrom/topic-5/scormdriver/indexAPI.html',
           'ChildWindow',
