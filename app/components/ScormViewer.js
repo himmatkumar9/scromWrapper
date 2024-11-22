@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { API } from './scormfunctions'
+// import { API } from './scormfunctions'
 const ScormViewer = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
