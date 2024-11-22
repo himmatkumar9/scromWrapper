@@ -8,7 +8,7 @@ const ScormViewer = () => {
       {/* {loading ? <div>Loading SCORM API...</div> : (
         <iframe  
           id="scormIframe"
-          src='https://www.nailsbyru.com/scrom/topic-5/scormcontent/index.html'
+          src='https://ltibackend.onrender.com/scrom/topic-5/scormdriver/indexAPI.html'
           title="SCORM Package"
           width="100%"
           height="600px"
@@ -19,7 +19,7 @@ const ScormViewer = () => {
       <button onClick={() => {
         window.API=API
         const ChildWindow = window.open(
-          'https://saraslmsdev.blob.core.windows.net/scorm/index.html',
+          'https://ltibackend.onrender.com/scrom/topic-5/scormdriver/indexAPI.html',
           'ChildWindow',
           'width=600,height=400'
         );
