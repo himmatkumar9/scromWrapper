@@ -64,19 +64,19 @@ var API = {
         return "No diagnostic information"; // Return diagnostic info based on errorCode
     }
 };
-// window.API=API
-// if(window.parent)
-// {
-//     window.parent=API
-// }
-// if(window.opener)
-// {
-//     window.opener=API
-// }
-// if(window.top)
-// {
-//     window.top=API
-// }
+window.API=API
+if(window.parent)
+{
+    window.parent=API
+}
+if(window.opener)
+{
+    window.opener=API
+}
+if(window.top)
+{
+    window.top=API
+}
 var findAPITries = 0;
 var maxFindAPITries = 10;
 
