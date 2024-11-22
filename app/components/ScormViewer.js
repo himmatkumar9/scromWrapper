@@ -5,7 +5,7 @@ const ScormViewer = () => {
   const [error, setError] = useState(null);
   return (
     <div>
-      {loading ? <div>Loading SCORM API...</div> : (
+      {/* {loading ? <div>Loading SCORM API...</div> : (
         <iframe  
           id="scormIframe"
           src='https://api.nailsbyru.com/scrom/topic-5/scormdriver/indexAPI.html'
@@ -15,7 +15,7 @@ const ScormViewer = () => {
           onLoad={handleIframeLoad}
           sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
         ></iframe>
-      )}
+      )} */}
       <button onClick={() => {
         window.API=API
         const ChildWindow = window.open(
